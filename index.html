@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fair Haven Christian Center — Chapel Of Impactation</title>
+  <meta name="description" content="Fair Haven Christian Center — Restoring the Lost Vision for the New Testament Church." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --green:#0f8a3b; --green-dark:#0b6b2f; --bg:#f6fbf6; --muted:#5b6b60; --card:#ffffff;
+      --maxw:1100px; font-family:'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;background:var(--bg);color:#072018;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:var(--maxw);margin:0 auto;padding:0 1rem}
+
+    /* Header */
+    header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.6);backdrop-filter:blur(6px);border-bottom:1px solid rgba(6,6,6,0.04)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:.9rem 0}
+    .brand{display:flex;gap:.75rem;align-items:center}
+    .logo-placeholder{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--green),#7fe2a6);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:1.05rem;box-shadow:0 8px 22px rgba(11,107,47,0.14)}
+    nav ul{display:flex;gap:1rem;list-style:none;padding:0;margin:0}
+    nav a{padding:.5rem .6rem;border-radius:8px;font-weight:600;color:#072018}
+    nav a:hover{background:rgba(11,107,47,0.06)}
+    .cta{background:var(--green-dark);color:white;padding:.5rem .9rem;border-radius:10px;font-weight:700}
+    .menu-toggle{display:none}
+
+    /* Hero */
+    .hero-outer{border-radius:18px;overflow:hidden;margin-top:1rem}
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:2rem;align-items:center;padding:3.25rem}
+    .hero-left{animation:fadeInUp .9s ease both;}
+    .hero-left h1{font-size:clamp(1.8rem,3.2vw,2.6rem);margin:0;color:white;line-height:1}
+    .hero-left p{color:rgba(255,255,255,0.95);font-size:1.02rem;margin:.75rem 0}
+    .hero-cta{display:flex;gap:.75rem;margin-top:1rem}
+    .hero-right{background:rgba(255,255,255,0.95);padding:1.25rem;border-radius:14px;box-shadow:0 12px 30px rgba(2,6,23,0.06)}
+    .card{background:var(--card);padding:1rem;border-radius:12px;box-shadow:0 6px 18px rgba(9,30,30,0.04)}
+
+    /* Sections */
+    section{padding:2rem 0}
+    h2{margin:0 0 .75rem 0}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+
+    /* Sermons */
+    .sermon{display:flex;gap:1rem;align-items:center}
+    .thumb{width:120px;height:72px;border-radius:10px;overflow:hidden;background:linear-gradient(135deg,#ecf9ef,#e6f6ee);display:flex;align-items:center;justify-content:center;color:var(--green-dark);font-weight:700}
+
+    /* Gallery */
+    #gallery {background: linear-gradient(180deg, #f6fbf6, #ffffff);}
+    #gallery h2 {color: var(--green-dark); text-align: center;}
+    #gallery p {text-align: center; margin-bottom: 1.2rem;}
+    .gallery-grid {display: grid;grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));gap: 1rem;}
+    .gallery-grid img {width: 100%;border-radius: 12px;box-shadow: 0 4px 14px rgba(0,0,0,0.08);transition: transform 0.3s ease, box-shadow 0.3s ease;cursor:pointer;}
+    .gallery-grid img:hover {transform: scale(1.03);box-shadow: 0 6px 18px rgba(0,0,0,0.15);}
+
+    /* Lightbox */
+    .lightbox {display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);align-items:center;justify-content:center;z-index:100;}
+    .lightbox img {max-width:90%;max-height:85%;border-radius:12px;box-shadow:0 0 30px rgba(0,0,0,0.4);}
+    .lightbox:target {display:flex;}
+    .lightbox-close {position:absolute;top:20px;right:30px;color:white;font-size:2rem;text-decoration:none;font-weight:700;}
+
+    /* Video Modal */
+    .video-modal {display:none;position:fixed;inset:0;background:rgba(0,0,0,0.9);align-items:center;justify-content:center;z-index:200;}
+    .video-modal iframe {width:80%;height:70%;border:none;border-radius:12px;}
+    .video-modal.active {display:flex;}
+    .video-modal button {position:absolute;top:20px;right:30px;background:none;border:none;color:white;font-size:2rem;cursor:pointer;}
+
+    footer{padding:1.25rem 0;border-top:1px solid rgba(2,6,23,0.03);margin-top:2rem}
+
+    /* Utilities */
+    .pill{padding:.35rem .65rem;border-radius:999px;background:rgba(255,255,255,0.08);color:white;font-weight:700;display:inline-block}
+    .muted{color:var(--muted)}
+    .btn{display:inline-block;padding:.6rem .95rem;border-radius:10px;font-weight:700}
+    .btn-light{background:rgba(255,255,255,0.12);color:white}
+    .btn-solid{background:white;color:var(--green-dark)}
+
+    /* Animations */
+    @keyframes fadeInUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+    /* Responsive */
+    @media (max-width:980px){.hero{grid-template-columns:1fr}.hero-right{order:2}.hero-left{order:1}}
+    @media (max-width:720px){nav ul{display:none}.menu-toggle{display:inline-flex}}
+
+    /* Hero background */
+    .hero-bg{background-image:linear-gradient(180deg,rgba(6,70,32,0.82),rgba(9,85,44,0.1)),url('church.png');background-size:cover;background-position:center}
+
+    /* Contact form */
+    form{display:grid;gap:.6rem}
+    input,textarea{padding:.65rem;border-radius:8px;border:1px solid #e6eee9;font-size:1rem}
+    a:focus,button:focus,input:focus,textarea:focus{outline:3px solid rgba(143,236,197,0.35);outline-offset:2px}
+  </style>
+</head>
+<body>
+  <header role="banner">
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo-placeholder">FH</div>
+        <div>
+          <div style="font-weight:700">Fair Haven Christian Center</div>
+          <div class="muted" style="font-size:.9rem">Chapel Of Impactation</div>
+        </div>
+      </div>
+
+      <nav role="navigation" aria-label="Main">
+        <ul id="main-nav">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#sermons">Sermons</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#ministries">Ministries</a></li>
+          <li><a href="#give">Give</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div style="display:flex;gap:.6rem;align-items:center">
+        <a class="pill" href="#give">Donate</a>
+        <a class="cta" href="#services">Plan a Visit</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- HERO -->
+    <section id="home" class="hero-outer hero-bg">
+      <div class="hero container">
+        <div class="hero-left">
+          <div class="pill">Welcome — Chapel Of Impactation</div>
+          <h1>Fair Haven Christian Center</h1>
+          <p>Restoring the Lost Vision for the New Testament Church as of the Days of the Apostles. Mentoring You for God's Purpose.</p>
+          <div class="hero-cta">
+            <a class="btn btn-light" href="#sermons">Watch Sermons</a>
+            <a class="btn btn-solid" href="#contact">Plan a Visit</a>
+          </div>
+        </div>
+        <aside class="hero-right">
+          <div class="card">
+            <strong>Service Times</strong>
+            <p class="muted">Sundays: 9:00 AM & 11:00 AM<br>Thursday: 6:00 PM</p>
+            <p><strong>Location:</strong> Shofunde Bustop, Agege</p>
+            <p class="muted"><strong>Lead Pastor:</strong> Pastor Abayomi Obabolujo</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="container">
+        <h2>About Us</h2>
+        <div class="grid">
+          <div class="card"><h3>Our Mission</h3><p>Restoring the Lost Vision for the New Testament Church as of the Days of the Apostles. Mentoring You for God's Purpose.</p></div>
+          <div class="card"><h3>History</h3><p>Fair Haven Christian Center is dedicated to biblical teaching, community outreach, and mentoring believers to fulfil God's purpose in their lives.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services">
+      <div class="container">
+        <h2>Services & Visit</h2>
+        <div class="grid">
+          <div class="card"><h3>Sunday Worship</h3><p class="muted">9:00 AM — Holy Communion & Teaching</p><p class="muted">11:00 AM — Contemporary Service</p></div>
+          <div class="card"><h3>Midweek</h3><p class="muted">Thursday, 6:00 PM — Bible Study & Prayer</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERMONS -->
+    <section id="sermons">
+      <div class="container">
+        <h2>Sermons</h2>
+        <div class="card">
+          <article class="sermon">
+            <div class="thumb">▶</div>
+            <div><h3>Restoring Apostolic Vision</h3><p class="muted">Pastor Abayomi Obabolujo — 2025-10-12</p></div>
+          </article>
+          <article class="sermon" style="margin-top:.6rem">
+            <div class="thumb">▶</div>
+            <div><h3>Mentoring for God's Purpose</h3><p class="muted">Pastor Abayomi Obabolujo — 2025-09-28</p></div>
+          </article>
+
+          <!-- 🎥 NEW SERMON WITH VIDEO -->
+          <article class="sermon" style="margin-top:.6rem">
+            <div class="thumb">
+              <img src="images/sermon-impactation.jpg" alt="Fulfilling God's Purpose To Attract Divine Favour" style="width:100%;height:100%;object-fit:cover;border-radius:10px">
+            </div>
+            <div style="flex:1">
+              <h3>The Power of Impactation</h3>
+              <p class="muted">Pastor Adegbaju — 2025-11-02</p>
+              <p style="margin-top:.45rem">
+                <a href="#" onclick="openVideo('https://www.youtube.com/embed/Jz_Fyr_RwZU')">Watch sermon</a> · <a href="#">Listen (audio)</a>
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 🌿 GALLERY SECTION -->
+    <section id="gallery">
+      <div class="container">
+        <h2>Our Church in Action</h2>
+        <p class="muted">Moments from our worship, fellowship, and outreach activities.</p>
+        <div class="gallery-grid">
+          <a href="#img1"><img src="images/service1.jpg" alt="Sunday Worship"></a>
+          <a href="#img2"><img src="images/choir.jpg" alt="Choir Ministration"></a>
+          <a href="#img3"><img src="images/outreach.jpg" alt="Community Outreach"></a>
+          <a href="#img4"><img src="images/youth.jpg" alt="Youth Fellowship"></a>
+          <a href="#img5"><img src="images/prayer.jpg" alt="Prayer Session"></a>
+          <a href="#img6"><img src="images/event.jpg" alt="Special Church Event"></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- LIGHTBOX POPUPS -->
+    <div id="img1" class="lightbox"><a href="#gallery" class="lightbox-close">×</a><img src="images/service1.jpg" alt=""></div>
+    <div id="img2" class="lightbox"><a href="#gallery" class="lightbox-close">×</a><img src="images/choir.jpg" alt=""></div>
+    <div id="img3" class="lightbox"><a href="#gallery" class="lightbox-close">×</a><img src="images/outreach.jpg" alt=""></div>
+    <div id="img4" class="lightbox"><a href="#gallery" class="lightbox-close">×</a><img src="images/youth.jpg" alt=""></div>
+    <div id="img5" class="lightbox"><a href="#gallery" class="lightbox-close">×</a><img src="images/prayer.jpg" alt=""></div>
+    <div id="img6" class="lightbox"><a href="#gallery" class="lightbox-close">×</a><img src="images/event.jpg" alt=""></div>
+
+    <!-- MINISTRIES -->
+    <section id="ministries">
+      <div class="container">
+        <h2>Ministries</h2>
+        <div class="grid">
+          <div class="card"><h3>Youth</h3><p class="muted">Programs for teens and young adults.</p></div>
+          <div class="card"><h3>Outreach</h3><p class="muted">Community and outreach projects.</p></div>
+          <div class="card"><h3>Worship</h3><p class="muted">Choir and musical ministry.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GIVE -->
+    <section id="give">
+      <div class="container">
+        <h2>Give / Donate</h2>
+        <p class="muted">Your generosity fuels ministry and outreach.</p>
+        <div class="grid">
+          <div class="card"><h3>Fast Donate</h3><p>Add a donate button for Paystack, Flutterwave, or Stripe.</p><p><a class="cta" href="#">Donate Online</a></p></div>
+          <div class="card"><h3>Bank Transfer</h3><p class="muted">Include bank details here for local givers.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container">
+        <h2>Contact & Visit</h2>
+        <div class="grid">
+          <div class="card"><h3>Location</h3><p>Shofunde Bustop, Agege</p></div>
+          <div class="card">
+            <h3>Get in Touch</h3>
+            <form action="https://formspree.io/f/xpwovron" method="POST">
+  <label>Name</label>
+  <input name="name" required>
+
+  <label>Email</label>
+  <input name="email" type="email" required>
+
+  <label>Message</label>
+  <textarea name="message" rows="4" required></textarea>
+
+  <button class="cta" type="submit">Send</button>
+</form>
+
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Video Modal -->
+  <div class="video-modal" id="videoModal">
+    <button onclick="closeVideo()">×</button>
+    <iframe id="videoFrame" src="" allowfullscreen></iframe>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p class="muted">© 2025 Fair Haven Christian Center — All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    function openVideo(url){
+      const modal=document.getElementById('videoModal');
+      const frame=document.getElementById('videoFrame');
+      frame.src=url+"?autoplay=1";
+      modal.classList.add('active');
+    }
+    function closeVideo(){
+      const modal=document.getElementById('videoModal');
+      const frame=document.getElementById('videoFrame');
+      frame.src="";
+      modal.classList.remove('active');
+    }
+  </script>
+</body>
+</html>
